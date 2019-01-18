@@ -44,12 +44,13 @@ def hierarchical_clustering(input_file, linkage='single'):
 
         # merge small_index_row and big_index_row and update it to small_index_row as new cluster
         if linkage == 'single':
+            # take the smaller values for single linkage
             mask = small_index_row < big_index_row
         elif linkage == 'complete':
+            # take the larger values for single linkage
             mask = small_index_row > big_index_row
 
         # update row1 (small index row) of distance matrix as the cluster
-        # we use single linkage
         distance_matrix[small_index, :] = np.where(mask, small_index_row, big_index_row)
         # restore the overwritten value on the diagonal to infinity
         distance_matrix[small_index, small_index] = np.inf
