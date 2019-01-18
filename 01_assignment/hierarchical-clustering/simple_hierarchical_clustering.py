@@ -1,5 +1,8 @@
 #!/usr/bin/env python
-# Single Linkage Hierarchical Clustering
+
+# Simple Hierarchical Agglomerative  Clustering
+# Time complexity = O(n^3)
+
 # Input Format: Takes in a distance matrix of size n x n. The matrix has to be a similar matrix.
 # Each line corresponds to the distance of a single node to all the other nodes. Space is used as a delimiter.
 # We assume the initial node labels to be 0..n-1, where n is the total number of items
@@ -10,8 +13,6 @@
 # 1,2 represent the items being clustered
 # 4 represents the new label assigned to the cluster of 1,2
 # 3 is the level of the kth cluster
-
-# Runtime complexity = O(n^3)
 
 import sys
 import numpy as np
