@@ -88,48 +88,6 @@ def efficient_hac(input_file, linkage='single'):
 
     return dendrogram
 
-    '''
-
-    # make diagonal infinity
-    # np.fill_diagonal(distance_matrix, np.inf)
-
-    dendrogram = []
-
-    for i in range( item_count-1 ):
-
-        # find index of minimum value in matrix
-        # note that min index will always be of the form (smaller_number, larger_number)
-        # in the case of a symmetric matrix
-        min_value = distance_matrix.min()
-        min_index = np.unravel_index(distance_matrix.argmin(), distance_matrix.shape)
-        small_index, big_index = min_index
-
-        small_index_row = distance_matrix[small_index, :]
-        big_index_row = distance_matrix[big_index, :]
-
-        # merge small_index_row and big_index_row and update it to small_index_row as new cluster
-        if linkage == 'single':
-            # take the smaller values for single linkage
-            mask = small_index_row < big_index_row
-        elif linkage == 'complete':
-            # take the larger values for single linkage
-            mask = small_index_row > big_index_row
-
-        # update row1 (small index row) of distance matrix as the cluster
-        distance_matrix[small_index, :] = np.where(mask, small_index_row, big_index_row)
-        # restore the overwritten value on the diagonal to infinity
-        distance_matrix[small_index, small_index] = np.inf
-
-        # update big_index_row to infinity as it's been merged with small_index_row
-        distance_matrix[big_index, :] = np.inf
-        distance_matrix[:, big_index] = np.inf
-
-        # add it to the stepwise dendrogram
-        dendrogram.append((small_index, big_index, min_value, small_index))
-
-    return dendrogram
-    '''
-
 def main():
     if len(sys.argv) != 2:
         sys.exit('Usage: {} <input_file>'.format(sys.argv[0]))
