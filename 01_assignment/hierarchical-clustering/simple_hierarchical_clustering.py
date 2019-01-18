@@ -2,6 +2,7 @@
 # Single Linkage Hierarchical Clustering
 # Input Format: Takes in a distance matrix of size n x n. The matrix has to be a similar matrix.
 # Each line corresponds to the distance of a single node to all the other nodes. Space is used as a delimiter.
+# We assume the initial node labels to be 0..n-1, where n is the total number of items
 
 # Output is a stepwise dendrogram
 # every row has 4 values
