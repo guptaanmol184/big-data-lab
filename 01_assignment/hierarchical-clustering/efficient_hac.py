@@ -1,5 +1,9 @@
 #!/usr/bin/python
 
+#  efficient_hac.py
+#  Copyright (C) 2019 ag <ag@archie>
+#  Distributed under terms of the MIT license.
+
 # Efficient Hierarchical Agglomerative Clustering - using priority queues
 # Uses single linkage to merge two clusters together
 # Time complexity = O(n^2 * logn)

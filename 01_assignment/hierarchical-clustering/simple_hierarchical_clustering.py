@@ -1,5 +1,9 @@
 #!/usr/bin/env python
 
+#  simple_hierarchical_clustering.py
+#  Copyright (C) 2019 ag <ag@archie>
+#  Distributed under terms of the MIT license.
+
 # Simple Hierarchical Agglomerative  Clustering
 # Time complexity = O(n^3)
 
