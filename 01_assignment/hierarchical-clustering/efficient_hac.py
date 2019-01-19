@@ -98,7 +98,7 @@ def efficient_hac(input_file, linkage='single'):
 
 # converts a dendrogram in my format to matplotlib format, so that we can plot it
 # give me that eye candy :)
-def convert_dendrogram_to_matlab(dendrogram):
+def convert_dendrogram_to_matplotlib(dendrogram):
     items_count = len(dendrogram) + 1
     cluster_count = {}
     for i in range(items_count):
@@ -139,7 +139,7 @@ def main():
         with open(sys.argv[1]) as f:
             labels = f.readline().strip().split()
 
-        z = convert_dendrogram_to_matlab(dendrogram)
+        z = convert_dendrogram_to_matplotlib(dendrogram)
         print('matplotlib format dendrogram')
         print(z)
 
