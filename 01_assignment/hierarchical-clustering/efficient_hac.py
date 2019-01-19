@@ -8,9 +8,11 @@
 # Uses single linkage to merge two clusters together
 # Time complexity = O(n^2 * logn)
 
-# Input Format: Takes in a distance matrix of size n x n. The matrix has to be a similar matrix.
+# Input Format: Takes in a file of the format specified below
+# First line: the labels of n nodes, delimited by a space, note: node labels should not contain a whitespace
+# The next n lines:
+# Distance matrix of size n x n. The matrix has to be a similar matrix.
 # Each line corresponds to the distance of a single node to all the other nodes. Space is used as a delimiter.
-# We assume the initial node labels to be 0..n-1, where n is the total number of items
 
 # Output is a stepwise dendrogram
 # every row has 4 values
@@ -27,7 +29,7 @@ import matplotlib.pyplot as plt
 
 def efficient_hac(input_file, linkage='single'):
     # load distance matrix from file
-    distance_matrix = np.loadtxt(input_file, dtype=np.float)
+    distance_matrix = np.loadtxt(input_file, dtype=np.float, skiprows=1)
     if (distance_matrix.ndim != 2  or
        distance_matrix.shape[0] != distance_matrix.shape[1] or
        np.any(distance_matrix != distance_matrix.T) ):
@@ -134,13 +136,16 @@ def main():
         print('Stepwise Dendrogram:')
         print(dendrogram)
 
+        with open(sys.argv[1]) as f:
+            labels = f.readline().strip().split()
+
         z = convert_dendrogram_to_matlab(dendrogram)
         print('matplotlib format dendrogram')
         print(z)
 
         # plot figure in using matplotlib
         plt.figure()
-        hierarchy.dendrogram(z)
+        hierarchy.dendrogram(z, labels=labels)
         plt.show()
 
 
