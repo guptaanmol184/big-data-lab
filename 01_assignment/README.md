@@ -8,7 +8,7 @@
    2. [ ] Bayes (or) Decision tree
       More measures of classifier accurace [F1 score, Specificity, Sensitivity, Recall, Precision, Area under curve]
 
-   3. [ ] K-means
+   3. [x] K-means
       Radius, Diameter, Purity of cluster (homogenity), Z3 Measures
 
 2. [ ] Explore all FIM library support in Python
