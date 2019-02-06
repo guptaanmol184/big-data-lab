@@ -1,4 +1,4 @@
-# Assignment 01
+# Assignment 02
 
 1. [ ] Implement efficient version of Apriori - Partition based approach, Hash-pruning, Transaction Reduction
 2. [ ] Implement A-close(cfi) and Pincer-search(mfi)
