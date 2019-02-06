@@ -4,7 +4,6 @@ Referred from : http://www2.cs.uregina.ca/~dbd/cs831/notes/itemsets/DIC.html
 """
 
 import numpy as np
-import pandas as pd
 import itertools 
 import copy
 			
@@ -153,10 +152,4 @@ while DC!=[] or DS!=[]:
 	print("DC: ",DC)
 	print("SS: ",SS)
 	print("SC: ",SC,"\n")
-
-
-
-
-
-
 
