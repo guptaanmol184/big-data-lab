@@ -12,7 +12,7 @@
       Radius, Diameter, Purity of cluster (homogenity), Z3 Measures
 
 2. [ ] Explore all FIM library support in Python
-3. [ ] DIC Implementation in Python w/o Library
+3. [X] DIC Implementation in Python w/o Library
 4. [x] Efficient version of Agglomerative clustering (Min-heap)[Reduction in time complexity]
 5. [ ] Implement ARBC(Association Rule Based Classifier)
 6. [ ] Check out data preprocessing support in python/R.
