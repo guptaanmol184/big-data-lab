@@ -1,0 +1,4 @@
+References-
+http://www2.cs.uregina.ca/~dbd/cs831/notes/itemsets/DIC.html
+http://delivery.acm.org/10.1145/260000/253325/p255-brin.pdf?ip=14.139.187.110&id=253325&acc=ACTIVE%20SERVICE&key=045416EF4DDA69D9%2E15933CB7B3F41354%2E4D4702B0C3E38B35%2E4D4702B0C3E38B35&__acm__=1547028396_2c1807e0ca25eb1697fe45197d728dc9
+
