@@ -218,10 +218,11 @@ def pincerSearch(transactions, min_support):
 
 		# Step 4: call MFCS-gen algorithm if Sk != NULL
 		MFCS = generateMFCS(MFCS, level_infrequent_itemsets)
-		print("MFCS = {}\n".format(MFCS))
+		print("MFCS = {}".format(MFCS))
 
 		# Step 5: call MFS-pruning procedure
 		level_frequent_itemsets = pruneCandidatesUsingMFS(level_frequent_itemsets, MFS)
+		print("After Pruning: L{} = {}\n".format(level_k, level_frequent_itemsets))
 
 		# Step 6: Generate candidates Ck+1 from Ck (using generate and prune)
 		candidate_frequent_itemsets = generateCandidateItemsets(level_k, level_frequent_itemsets)
@@ -258,6 +259,9 @@ if __name__ == '__main__':
 		{2, 3, 9},
 	]
 
+	min_support_count = 3
+
+
 	""" Example 4.5: Data Mining - Arjun K Pujari """
 	'''
 	transactions = [
@@ -277,8 +281,22 @@ if __name__ == '__main__':
 		{1, 3, 4, 5, 7},
 		{2, 3, 9},
 	]
+
+	min_support_count = 3
 	'''
 
+	""" Example """
+	'''
+	transactions = [
+		{1,2,3},
+		{3,4},
+		{1,2},
+		{3,5},
+		{2,5}
+	]
 
-	MFS = pincerSearch(transactions, 3)
+	min_support_count = 1
+	'''
+
+	MFS = pincerSearch(transactions, min_support_count)
 	print("MFS = {}".format(MFS))
