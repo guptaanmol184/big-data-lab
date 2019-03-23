@@ -4,7 +4,7 @@ Apriori is an algorithm for frequent item set mining and association rule learni
 
 We can improve the efficiency of the Apriori Algorithm by using the following techniques -
 
-1. Hash-based technique (hashing itemsets into corresponding buckets): A hash-based
+1. **Hash-based technique** _(hashing itemsets into corresponding buckets)_: A hash-based
 technique can be used to reduce the size of the candidate k-itemsets, Ck , for k > 1.
 For example, when scanning each transaction in the database to generate the fre-
 quent 1-itemsets, L1, from the candidate 1-itemsets in C1, we can generate all of the
@@ -14,8 +14,6 @@ A 2-itemset whose corresponding bucket count in the hash table is below the supp
 threshold cannot be frequent and thus should be removed from the candidate set.
 Such a hash-based technique may substantially reduce the number of the candidate
 k-itemsets examined (especially when k = 2).
-
-Advantages
 - Useful for pruning itemsets from C2 ( using the unused memeory during generation of L1 ), thereby reducing the size of C2.
 
 
