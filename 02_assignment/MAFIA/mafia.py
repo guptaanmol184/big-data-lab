@@ -159,10 +159,9 @@ def _mafiaAlgorithm(current_node, MFIs, transactions, min_support_count):
 	current_node.head += tuple(node_children_items_parent_eq)
 	current_node.tail = node_tail_items
 
-	is_leaf = True
+	is_leaf = not bool(current_node.tail)
 
 	for i, item in enumerate(current_node.tail):
-		is_leaf = False
 		new_node_head = current_node.head + (item,)
 		new_node_tail = current_node.tail[i+1:]
 		new_node_support_cnt = node_tail_items_sup_cnts[i][1]
@@ -172,7 +171,7 @@ def _mafiaAlgorithm(current_node, MFIs, transactions, min_support_count):
 		_mafiaAlgorithm(new_node, MFIs, transactions, min_support_count)
 
 	# if current node is a leaf and no superset of current node head in MFIs
-	if is_leaf and not any(all(item in mfi for item in current_node.head) for mfi in MFIs):
+	if is_leaf and current_node.head and not any(all(item in mfi for item in current_node.head) for mfi in MFIs):
 		MFIs.append(set(current_node.head))
 
 
