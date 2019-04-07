@@ -1,5 +1,7 @@
 """ A-Close: Closed Frequent Itemsets Mining Algorithm """
 
+from itertools import combinations
+
 def generateCandidateItemsets(level_k, level_frequent_itemsets):
         """ Generate and prune the candidate itemsets for next level using the frequent itemsets of the current level
 
@@ -84,8 +86,12 @@ def generateClosures(transactions, generators):
         return generators_closures
 
 
-def AClose(transactions, min_support):
+def AClose(transactions, min_support, return_support_counts=False):
         """ Extract the closed frequent itemsets from the transactions
+
+        Returns the closed closed frequent itemsets mined from the transactions that have a support greater than the minimum
+        threshold. There is one optional output in addition to the closed frequent itemsets: The support counts of the
+        closed frequent itemsets mined.
 
         Parameters
         ----------
@@ -95,10 +101,16 @@ def AClose(transactions, min_support):
         min_support : int
                 The minimum support threshold
 
+        return_support_counts : bool, optional
+                If true, also return the support count of each itemset
+
         Returns
         -------
-        tuple of two lists - list of sets and list of integers
-                closed frequent itemsets mined from the transactions that have support greater than the minimum threshold and their respective support counts
+        closed_frequent_itemsets : list of sets
+                closed frequent itemsets mined from the transactions that have support greater than the minimum threshold
+
+        support_counts : list of integers, optional
+                The support count of the closed frequent itemsets mined. Only provided if `return_support_counts` is True.
         """
 
         items = set()
@@ -176,16 +188,16 @@ def AClose(transactions, min_support):
                 if generator_closure not in closed_frequent_itemsets:
                         closed_frequent_itemsets.append(generator_closure)
 
-
-        # Generate count of cfi's
-        closed_frequent_itemsets_cnts = [0]*len(closed_frequent_itemsets)
-        for transaction in transactions:
-                for i, itemset in enumerate(closed_frequent_itemsets):
-                        if all(_item in transaction for _item in itemset):
-                            closed_frequent_itemsets_cnts[i] += 1
-
-        return closed_frequent_itemsets, closed_frequent_itemsets_cnts
-
+        if return_support_counts == True:
+            # Generate count of cfi's
+            closed_frequent_itemsets_cnts = [0]*len(closed_frequent_itemsets)
+            for transaction in transactions:
+                    for i, itemset in enumerate(closed_frequent_itemsets):
+                            if all(_item in transaction for _item in itemset):
+                                closed_frequent_itemsets_cnts[i] += 1
+            return closed_frequent_itemsets, closed_frequent_itemsets_cnts
+        else:
+            return closed_frequent_itemsets
 
 if __name__ == '__main__':
 
@@ -198,7 +210,7 @@ if __name__ == '__main__':
                 {'A', 'B', 'C', 'E'},
         ]
 
-        CFIs, CFI_cnts = AClose(transactions, 3)
+        CFIs, CFI_cnts = AClose(transactions, 3, return_support_counts=True)
 
         print("Closed Frequent Itemsets (CFIs)")
         print("-------------------------------")
